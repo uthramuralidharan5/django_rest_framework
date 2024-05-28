@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Destinations</h1>
+  <a href="{% url 'destination_create' %}" class="btn btn-primary">Add Destination</a>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for destination in destinations %}
+        <tr>
+          <td>{{ destination.name }}</td>
+          <td>{{ destination.location }}</td>
+          <td>{{ destination.description }}</td>
+          <td>
+            <a href="{% url 'destination_update' destination.id %}" class="btn btn-primary">Edit</a>
+            <a href="{% url 'destination_delete' destination.id %}" class="btn btn-danger">Delete</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
